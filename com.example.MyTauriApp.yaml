@@ -1,0 +1,22 @@
+id: com.example.MyTauriApp
+runtime: org.freedesktop.Platform
+runtime-version: "22.08"
+sdk: org.freedesktop.Sdk
+command: mytauriapp
+
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --share=network
+  - --filesystem=home
+
+modules:
+  - name: mytauriapp
+    buildsystem: simple
+    build-commands:
+      - cargo tauri build --release
+      - install -D target/release/mytauriapp /app/bin/mytauriapp
+    sources:
+      - type: git
+        url: <your-tauri-app-repo-url>
+        branch: main
