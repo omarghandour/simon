@@ -2,7 +2,7 @@ id: com.example.MyTauriApp
 runtime: org.freedesktop.Platform
 runtime-version: "22.08"
 sdk: org.freedesktop.Sdk
-command: mytauriapp
+command: simon
 
 finish-args:
   - --socket=x11
@@ -11,12 +11,12 @@ finish-args:
   - --filesystem=home
 
 modules:
-  - name: mytauriapp
+  - name: simon
     buildsystem: simple
     build-commands:
       - cargo tauri build --release
-      - install -D target/release/mytauriapp /app/bin/mytauriapp
+      - install -D target/release/simon /app/bin/simon
     sources:
       - type: git
-        url: <your-tauri-app-repo-url>
+        url: https://github.com/omarghandour/simon.git
         branch: main
